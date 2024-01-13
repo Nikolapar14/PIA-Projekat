@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <title>Moj najdrazi nastavnik</title>
+</head>
+<body>
+
+  <div class="containter">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href=""><img src="../../assets/pencil.png" alt="Logo" width="40px" height="40px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end nav-tabs" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page"  routerLink="">Pocetna</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" routerLink="registracija">Registracija</a>
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <table>
+          <tr>
+            <td>Registruj se kao:&nbsp;&nbsp; </td>
+            <td><input type="radio" name="reg" id="reg1" value="ucenik" [(ngModel)]="tipKorisnika">Ucenik&nbsp;&nbsp;</td>
+            <td><input type="radio" name="reg" id="reg2" value="nastavnik" [(ngModel)]="tipKorisnika">Nastavnik&nbsp;&nbsp;</td>
+            <td><button type="button" class="btn btn-dark" (click)="izaberi()">Izaberi</button></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+
+    <div class="row" *ngIf="ispisiUcenika" >
+      <div class="col-sm-3"></div>
+      <div class="ucenik col-sm-6">
+        <table>
+          <tr>
+            <td>Korisnicko ime:  </td>
+            <td><input type="text" [(ngModel)]="ucenik.korisnickoIme"></td>
+          </tr>
+          <tr>
+            <td>Lozinka:  </td>
+            <td style="padding-top: 40px;"><input type="password" [(ngModel)]="ucenik.lozinka"><p style="font-size: x-small;">Format lozinke: минимално 6 карактера, максимално 10 карактера, од тога бар једно велико слово,<br> три мала слова, један број и један специјални карактер, и мора почињати словом</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Bezbedonosno pitanje: </td>
+            <td><select class="form-select" aria-label="Default select example" [(ngModel)]="ucenik.bezbedonosnoPitanje">
+              <option selected>Izaberite pitanje</option>
+              <option value="Kako glasi ime Vaseg kucnog ljubimca?" >Kako glasi ime Vaseg kucnog ljubimca?</option>
+              <option value="Koji je Vas omiljen film?" >Koji je Vas omiljen film?</option>
+              <option value="Koja je Vasa omiljena knjiga?" >Koja je Vasa omiljena knjiga?</option>
+              <option value="Koji nadimak ste imali kada ste bili mali?">Koji nadimak ste imali kada ste bili mali?</option>
+            </select>
+          </tr>
+          <tr>
+            <td>Odgovor na pitanje:</td>
+            <td><input type="text" [(ngModel)]="ucenik.odgovor"></td>
+          </tr>
+          <tr>
+            <td>Ime: </td>
+            <td><input type="text" [(ngModel)]="ucenik.ime"></td>
+          </tr>
+          <tr>
+            <td>Prezime: </td>
+            <td><input type="text" [(ngModel)]="ucenik.prezime"></td>
+          </tr>
+          <tr>
+            <td>Pol: </td>
+            <td><input type="radio" name="pol" id="M" value="M" [(ngModel)]="ucenik.pol">Muski&nbsp;&nbsp;
+              <input type="radio" name="pol" id="Z" value="Z" [(ngModel)]="ucenik.pol">Zenski
+            </td>
+          </tr>
+          <tr>
+            <td>Adresa: </td>
+            <td><input type="text" [(ngModel)]="ucenik.adresa"></td>
+          </tr>
+          <tr>
+            <td>Kontakt telefon:</td>
+            <td><input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required [(ngModel)]="ucenik.kontaktTelefon"/>
+
+              <small>Format: 123-456-7890</small></td>
+          </tr>
+          <tr>
+            <td>Email: </td>
+            <td><input type="text" [(ngModel)]="ucenik.email"></td>
+          </tr>
+          <tr>
+            <td>Profila slika: </td>
+            <td id="profilna">
+              <input type="file" (change)="onFileSelected($event)">
+              <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" width="100">
+            </td>
+          </tr>
+          <tr>
+            <td>Tip skole: </td>
+            <td><select class="form-select" aria-label="Default select example" [(ngModel)]="tipSkole">
+              <option selected>Izaberite tip skole</option>
+              <option value="osnovna" >Osnovna</option>
+              <option value="srednja-gimnazija" >Srednja - gimnazija</option>
+              <option value="srednja-strucna" >Srednja - strucna</option>
+              <option value="srednja-umetnicka">Srednja - umetnicka</option>
+            </select>
+            <small>*Nakon izabranog tipa skole pritisnuti dugme "Dalje"
+
+            </small>
+            <button type="button" class="btn btn-dark" (click)="dalje()">Dalje</button>
+          </td>
+          </tr>
+          <tr *ngIf="ispisiOsnovnu">
+            <td>Trenutni razred:</td>
+            <td>
+              <select id ="selectZadnji" class="form-select" aria-label="Default select example" [(ngModel)]="razred">
+                <option selected>Izaberite razred</option>
+                <option value="1" >Prvi</option>
+                <option value="2" >Drugi</option>
+                <option value="3" >Treci</option>
+                <option value="4" >Cetvrti</option>
+                <option value="5" >Peti</option>
+                <option value="6" >Sesti</option>
+                <option value="7" >Sedmi</option>
+                <option value="8" >Osmi</option>
+              </select>
+
+            </td>
+          </tr>
+          <tr *ngIf="ispisiSrednju">
+            <td>Trenutni razred:</td>
+            <td>
+              <select id ="selectZadnji" class="form-select" aria-label="Default select example" [(ngModel)]="razred">
+                <option selected>Izaberite razred</option>
+                <option value="1" >Prvi</option>
+                <option value="2" >Drugi</option>
+                <option value="3" >Treci</option>
+                <option value="4" >Cetvrti</option>
+
+              </select>
+
+            </td>
+          </tr>
+          <tr >
+            <td colspan="2" style="display: flex; justify-content: center;"><button type="button" class="btn btn-dark" (click)="submit()">Registracija</button></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska1">
+              <b>Sva polja moraju biti popunjena!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska2">
+              <b>Izaberite bezbedonosno pitanje!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska3">
+              <b>Izaberite pol ucenika!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska4">
+              <b>Izaberite profilnu sliku u odgovarajucem formatu!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska5">
+              <b>Izaberite tip skole ucenika!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska6">
+              <b>Izaberite razred ucenika!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="formatLozinkaGreska">
+              <b>Format lozinke nije uredu!</b>
+            </div></td>
+          </tr>
+
+
+        </table>
+      </div>
+
+      <div class="col-sm-3"></div>
+
+    </div>
+    <div class="row" *ngIf="ispisiNastavnika">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <table>
+          <tr>
+            <td>Korisnicko ime:  </td>
+            <td><input type="text" [(ngModel)]="nastavnik.korisnickoIme"></td>
+          </tr>
+          <tr>
+            <td>Lozinka:  </td>
+            <td style="padding-top: 40px;"><input type="password" [(ngModel)]="nastavnik.lozinka"><p style="font-size: x-small;">Format lozinke: минимално 6 карактера, максимално 10 карактера, од тога бар једно велико слово,<br> три мала слова, један број и један специјални карактер, и мора почињати словом</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Bezbedonosno pitanje: </td>
+            <td><select class="form-select" aria-label="Default select example" [(ngModel)]="nastavnik.bezbedonosnoPitanje">
+              <option selected>Izaberite pitanje</option>
+              <option value="Kako glasi ime Vaseg kucnog ljubimca?" >Kako glasi ime Vaseg kucnog ljubimca?</option>
+              <option value="Koji je Vas omiljen film?" >Koji je Vas omiljen film?</option>
+              <option value="Koja je Vasa omiljena knjiga?" >Koja je Vasa omiljena knjiga?</option>
+              <option value="Koji nadimak ste imali kada ste bili mali?">Koji nadimak ste imali kada ste bili mali?</option>
+            </select>
+          </tr>
+          <tr>
+            <td>Odgovor na pitanje:</td>
+            <td><input type="text" [(ngModel)]="nastavnik.odgovor"></td>
+          </tr>
+          <tr>
+            <td>Ime: </td>
+            <td><input type="text" [(ngModel)]="nastavnik.ime"></td>
+          </tr>
+          <tr>
+            <td>Prezime: </td>
+            <td><input type="text" [(ngModel)]="nastavnik.prezime"></td>
+          </tr>
+          <tr>
+            <td>Pol: </td>
+            <td><input type="radio" name="pol" id="M" value="M" [(ngModel)]="nastavnik.pol">Muski&nbsp;&nbsp;
+              <input type="radio" name="pol" id="Z" value="Z" [(ngModel)]="nastavnik.pol">Zenski
+            </td>
+          </tr>
+          <tr>
+            <td>Adresa: </td>
+            <td><input type="text" [(ngModel)]="nastavnik.adresa"></td>
+          </tr>
+          <tr>
+            <td>Kontakt telefon:</td>
+            <td><input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required [(ngModel)]="nastavnik.kontaktTelefon"/>
+
+              <small>Format: 123-456-7890</small></td>
+          </tr>
+          <tr>
+            <td>Email: </td>
+            <td><input type="text" [(ngModel)]="nastavnik.email"></td>
+          </tr>
+          <tr>
+            <td>Profila slika: </td>
+            <td id="profilna">
+              <input type="file" (change)="onFileSelected($event)">
+              <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" width="100">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="display: flex; justify-content: center;"><button type="button" class="btn btn-dark" (click)="daljeNastavnik1()">Naredni korak</button></td>
+          </tr>
+          <tr *ngIf="daljeNastavnik">
+              <td>Radna biografija(PDF):</td>
+              <td>
+                <input type="file" (change)="onFileSelectedPDF($event)" />
+              </td>
+          </tr>
+          <tr *ngIf="daljeNastavnik">
+            <td>Predmeti koje zelite da poducavate:</td>
+            <td><select id="predmeti" name="predmeti" multiple [(ngModel)]="nastavnik.predmeti">
+              <option value="matematika">Matematika</option>
+              <option value="fizika">Fizika</option>
+              <option value="hemija">Hemija</option>
+              <option value="informatika">Informatika</option>
+              <option value="programiranje">Programiranje</option>
+              <option value="srpski">Srpski jezik i knjizevnost</option>
+              <option value="engleski">Engleski jezik</option>
+              <option value="nemacki">Nemacki jezik</option>
+              <option value="italijanski">Italijanski jezik</option>
+              <option value="francuski">Francuski jezik</option>
+              <option value="spanski">Spanski jezik</option>
+              <option value="latinski">Latinski jezik</option>
+              <option value="biologija">Biologija</option>
+              <option value="istorija">Istorije</option>
+              <option value="geografija">Geografija</option>
+              <option value="svetokonas">Svet oko nas</option>
+          </select></td>
+          </tr>
+          <tr *ngIf="daljeNastavnik">
+            <td>Predmet koji zelite da poducavate <br/> a nije naveden:</td>
+            <td><input type="text" [(ngModel)]="nastavnik.drugiPredmet"></td>
+          </tr>
+          <tr *ngIf="daljeNastavnik">
+            <td>Kom uzrastu zelite da predajete:</td>
+            <td>
+              <select id="uzrast" name="uzrast" multiple [(ngModel)]="nastavnik.uzrast">
+                <option value="osnovna1">Osnovna(1-4)</option>
+                <option value="osnovna2">Osnovna(5-8)</option>
+                <option value="srednja">Srednja</option>
+
+            </select>
+            </td>
+          </tr>
+
+          <tr *ngIf="daljeNastavnik">
+            <td>Gde ste culi za nas sajt:</td>
+            <td><input type="text" [(ngModel)]="nastavnik.izvor"></td>
+          </tr>
+          <tr *ngIf="daljeNastavnik">
+            <td colspan="2" style="display: flex; justify-content: center;"><button type="button" class="btn btn-dark" (click)="submitNastavnik()">Registracija</button></td>
+          </tr>
+
+
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska1">
+              <b>Sva polja moraju biti popunjena!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska2">
+              <b>Izaberite bezbedonosno pitanje!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska3">
+              <b>Izaberite pol ucenika!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greska4">
+              <b>Izaberite profilnu sliku u odgovarajucem formatu!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="formatLozinkaGreska">
+              <b>Format lozinke nije uredu!</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greskaNastavnik1">
+              <b>Morate izabrati makar 1 predmet</b>
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="greskaNastavnik2">
+              <b>Izaberite uzrast</b>
+            </div></td>
+          </tr>
+
+
+        </table>
+      </div>
+
+      <div class="col-sm-3"></div>
+
+    </div>
+
+
+
+  </div>
+
+</body>
+
+</html>
+
+
