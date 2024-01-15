@@ -48,12 +48,7 @@ class UcenikController {
             let password = req.body.password;
             ucenik_1.default.findOne({ "korisnickoIme": username,
                 "lozinka": password }).then((user) => {
-                if (user != null) {
-                    res.json({ "message": "ok" });
-                }
-                else {
-                    res.json({ "message": "nije ok" });
-                }
+                res.json(user);
             }).catch((err) => {
                 console.log(err);
             });
@@ -67,6 +62,29 @@ class UcenikController {
                 }
                 else {
                     res.json({ "message": "nije ok" });
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
+        this.nadjiUcenikaUsernamePassword = (req, res) => {
+            let username = req.body.username;
+            let password = req.body.password;
+            ucenik_1.default.findOne({ "korisnickoIme": username, "lozinka": password
+            }).then((user) => {
+                res.json(user);
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
+        this.promenaSifre = (req, res) => {
+            let username = req.body.username;
+            let password = req.body.password;
+            let passwordOld = req.body.passwordOld;
+            ucenik_1.default.findOneAndUpdate({ "korisnickoIme": username, "lozinka": passwordOld
+            }, { $set: { "lozinka": password } }).then((user) => {
+                if (user != null) {
+                    res.json({ "msg": "Prosao" });
                 }
             }).catch((err) => {
                 console.log(err);

@@ -9,5 +9,7 @@ const ucenikRouter = express_1.default.Router();
 ucenikRouter.route('/register').post((req, res) => new ucenik_controller_1.UcenikController().register(req, res));
 ucenikRouter.route('/logIn').post((req, res) => new ucenik_controller_1.UcenikController().logIn(req, res));
 ucenikRouter.route('/nadjiUcenikaUsername').post((req, res) => new ucenik_controller_1.UcenikController().nadjiUcenikaUsername(req, res));
+ucenikRouter.route('/nadjiUcenikaUsernamePassword').post((req, res) => new ucenik_controller_1.UcenikController().nadjiUcenikaUsernamePassword(req, res));
 ucenikRouter.route('/nadjiUcenikaEmail').post((req, res) => new ucenik_controller_1.UcenikController().nadjiUcenikaEmail(req, res));
+ucenikRouter.route('/promenaSifre').post((req, res) => new ucenik_controller_1.UcenikController().promenaSifre(req, res));
 exports.default = ucenikRouter;

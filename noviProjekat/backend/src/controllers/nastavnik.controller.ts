@@ -51,6 +51,55 @@ export class NastavnikController{
 
     }
 
+    logIn = (req: express.Request, res: express.Response)=>{
+        console.log("Usao")
+        let username = req.body.username
+        let password = req.body.password
+
+         Nastavnik.findOne({"korisnickoIme": username, 
+            "lozinka": password}).then((user)=>{
+                res.json(user)
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+    }
+
+
+    nadjiNastavnikaUsernamePassword = (req: express.Request, res: express.Response) =>{
+        let username = req.body.username
+        let password = req.body.password
+        
+        Nastavnik.findOne({"korisnickoIme": username, "lozinka": password 
+            }).then((user)=>{
+                res.json(user)
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
+    promenaSifre = (req: express.Request, res: express.Response) =>{
+        let username = req.body.username
+        let password = req.body.password
+        let passwordOld = req.body.passwordOld
+        
+        Nastavnik.findOneAndUpdate({"korisnickoIme": username, "lozinka": passwordOld 
+            },{$set: {"lozinka": password}}).then((user)=>{
+                
+                if(user != null){
+                    res.json({"msg": "Prosao"})
+                }
+                
+                
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
    
 
 

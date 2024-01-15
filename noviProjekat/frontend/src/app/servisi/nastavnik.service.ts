@@ -35,5 +35,39 @@ export class NastavnikService {
     return this.http.post<Message>("http://localhost:4000/nastavnik/register", data)
   }
 
+  logInNastavnik(username: String, password: String){
+
+    const data = {
+      username: username,
+      password : password
+    }
+    console.log("Prosao")
+
+    return this.http.post<Nastavnik>("http://localhost:4000/nastavnik/logIn",data)
+
+  }
+
+  nadjiNastavnikaUsernamePassword(username: String, password: String){
+    const data = {
+      username: username,
+      password: password
+    }
+
+    return this.http.post<Nastavnik>("http://localhost:4000/nastavnik/nadjiNastavnikaUsernamePassword",data)
+
+  }
+
+  promenaSifre(username: string,password: string, passwordOld: string){
+
+    const data = {
+      username:username,
+      password: password,
+      passwordOld: passwordOld
+    }
+
+    return this.http.post<Message>("http://localhost:4000/nastavnik/promenaSifre",data)
+
+  }
+
 
 }

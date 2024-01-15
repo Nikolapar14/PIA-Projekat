@@ -7,12 +7,18 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistracijaComponent } from './registracija/registracija.component';
+import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.component';
+import { NastavnikComponent } from './nastavnik/nastavnik.component';
+import { UcenikComponent } from './ucenik/ucenik.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistracijaComponent
+    RegistracijaComponent,
+    PromenaLozinkeComponent,
+    NastavnikComponent,
+    UcenikComponent
   ],
   imports: [
     BrowserModule,

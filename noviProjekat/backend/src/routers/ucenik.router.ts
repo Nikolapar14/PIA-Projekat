@@ -17,8 +17,16 @@ ucenikRouter.route('/nadjiUcenikaUsername').post(
     (req,res) => new UcenikController().nadjiUcenikaUsername(req,res)
 )
 
+ucenikRouter.route('/nadjiUcenikaUsernamePassword').post(
+    (req,res) => new UcenikController().nadjiUcenikaUsernamePassword(req,res)
+)
+
 ucenikRouter.route('/nadjiUcenikaEmail').post(
     (req,res) => new UcenikController().nadjiUcenikaEmail(req,res)
+)
+
+ucenikRouter.route('/promenaSifre').post(
+    (req,res) => new UcenikController().promenaSifre(req,res)
 )
 
 export default ucenikRouter

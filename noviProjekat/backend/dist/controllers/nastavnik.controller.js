@@ -48,6 +48,40 @@ class NastavnikController {
                 console.log(err);
             });
         };
+        this.logIn = (req, res) => {
+            console.log("Usao");
+            let username = req.body.username;
+            let password = req.body.password;
+            nastavnik_1.default.findOne({ "korisnickoIme": username,
+                "lozinka": password }).then((user) => {
+                res.json(user);
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
+        this.nadjiNastavnikaUsernamePassword = (req, res) => {
+            let username = req.body.username;
+            let password = req.body.password;
+            nastavnik_1.default.findOne({ "korisnickoIme": username, "lozinka": password
+            }).then((user) => {
+                res.json(user);
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
+        this.promenaSifre = (req, res) => {
+            let username = req.body.username;
+            let password = req.body.password;
+            let passwordOld = req.body.passwordOld;
+            nastavnik_1.default.findOneAndUpdate({ "korisnickoIme": username, "lozinka": passwordOld
+            }, { $set: { "lozinka": password } }).then((user) => {
+                if (user != null) {
+                    res.json({ "msg": "Prosao" });
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
     }
 }
 exports.NastavnikController = NastavnikController;

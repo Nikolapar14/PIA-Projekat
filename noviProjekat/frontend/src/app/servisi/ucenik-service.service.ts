@@ -40,7 +40,7 @@ export class UcenikServiceService {
     }
     console.log("Prosao")
 
-    return this.http.post<Message>("http://localhost:4000/ucenik/logIn",data)
+    return this.http.post<Ucenik>("http://localhost:4000/ucenik/logIn",data)
 
   }
 
@@ -53,6 +53,16 @@ export class UcenikServiceService {
 
   }
 
+  nadjiUcenikaUsernamePassword(username: String, password: String){
+    const data = {
+      username: username,
+      password: password
+    }
+
+    return this.http.post<Ucenik>("http://localhost:4000/ucenik/nadjiUcenikaUsernamePassword",data)
+
+  }
+
   nadjiUcenikaEmail(email: string) {
 
     const data = {
@@ -60,6 +70,18 @@ export class UcenikServiceService {
     }
 
     return this.http.post<Message>("http://localhost:4000/ucenik/nadjiUcenikaEmail",data)
+  }
+
+  promenaSifre(username: string,password: string, passwordOld: string){
+
+    const data = {
+      username:username,
+      password: password,
+      passwordOld: passwordOld
+    }
+
+    return this.http.post<Message>("http://localhost:4000/ucenik/promenaSifre",data)
+
   }
 
 }

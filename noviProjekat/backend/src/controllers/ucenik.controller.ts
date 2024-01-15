@@ -50,11 +50,7 @@ export class UcenikController{
 
          Ucenik.findOne({"korisnickoIme": username, 
             "lozinka": password}).then((user)=>{
-                if(user != null){
-                    res.json({"message" : "ok"})
-                }else{
-                    res.json({"message" : "nije ok"})
-                }
+                res.json(user)
                 
             }).catch((err)=>{
                 console.log(err)
@@ -71,6 +67,40 @@ export class UcenikController{
                 }else{
                     res.json({"message" : "nije ok"})
                 }
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
+    nadjiUcenikaUsernamePassword = (req: express.Request, res: express.Response) =>{
+        let username = req.body.username
+        let password = req.body.password
+        
+        Ucenik.findOne({"korisnickoIme": username, "lozinka": password 
+            }).then((user)=>{
+                res.json(user)
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
+    promenaSifre = (req: express.Request, res: express.Response) =>{
+        let username = req.body.username
+        let password = req.body.password
+        let passwordOld = req.body.passwordOld
+        
+        Ucenik.findOneAndUpdate({"korisnickoIme": username, "lozinka": passwordOld 
+            },{$set: {"lozinka": password}}).then((user)=>{
+                
+                if(user != null){
+                    res.json({"msg": "Prosao"})
+                }
+                
+                
                 
             }).catch((err)=>{
                 console.log(err)

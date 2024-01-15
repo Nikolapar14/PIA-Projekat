@@ -78,9 +78,13 @@
                     <td><input type="password" [(ngModel)]="password"></td>
                   </tr>
                 </table>
-                <a href="" style="display: flex; justify-content: center;">Promena lozinke</a>
+                <a routerLink="promenaLozinke" style="display: flex; justify-content: center;">Promena lozinke</a>
                 <br>
-                <button (click)="logIn()"></button>
+                <a href="" style="display: flex; justify-content: center;">Zaboravljena lozinka?</a>
+                <br>
+                <button type="button" class="btn btn-dark"  (click)="logIn()" style="margin-top: 3%;">Login</button>
+                <br>
+                <span style="color: red;">{{poruka}}</span>
               </div>
           </div>
           <div class="col-sm-2"></div>
