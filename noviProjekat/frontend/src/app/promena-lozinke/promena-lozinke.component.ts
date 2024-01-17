@@ -57,7 +57,7 @@ export class PromenaLozinkeComponent implements OnInit{
 
 
                   alert("Sifra je uspesno promenjena!")
-                  this.router.navigate([''])
+                  this.router.navigate(['login'])
                 }
 
               })
@@ -85,7 +85,7 @@ export class PromenaLozinkeComponent implements OnInit{
 
                     if(mes){
                       alert("Sifra je uspesno promenjena!")
-                      this.router.navigate([''])
+                      this.router.navigate(['login'])
                     }
 
                   })

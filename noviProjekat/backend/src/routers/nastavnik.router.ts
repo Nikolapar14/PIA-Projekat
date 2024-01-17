@@ -21,6 +21,18 @@ nastavnikRouter.route('/promenaSifre').post(
     (req,res) => new NastavnikController().promenaSifre(req,res)
 )
 
+nastavnikRouter.route('/nadjiNastavnikaUsername').post(
+    (req,res) => new NastavnikController().nadjiNastavnikaUsername(req,res)
+)
+
+nastavnikRouter.route('/nadjiNastavnikaEmail').post(
+    (req,res) => new NastavnikController().nadjiNastavnikaEmail(req,res)
+)
+
+nastavnikRouter.route('/dohvatiAktivneNastavnike').get(
+    (req,res) => new NastavnikController().dohvatiAktivneNastavnike(req,res)
+)
+
 
 
 export default nastavnikRouter

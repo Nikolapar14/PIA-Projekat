@@ -24,6 +24,7 @@ class NastavnikController {
             let drugiPredmet = req.body.drugiPredmet;
             let uzrast = req.body.uzrast;
             let izvor = req.body.izvor;
+            let aktivan = req.body.aktivan;
             let nastavnik = {
                 korisnickoIme: korisnickoIme,
                 lozinka: lozinka,
@@ -40,7 +41,8 @@ class NastavnikController {
                 predmeti: predmeti,
                 drugiPredmet: drugiPredmet,
                 uzrast: uzrast,
-                izvor: izvor
+                izvor: izvor,
+                aktivan: aktivan
             };
             new nastavnik_1.default(nastavnik).save().then(ok => {
                 res.json({ message: "ok" });
@@ -78,6 +80,37 @@ class NastavnikController {
                 if (user != null) {
                     res.json({ "msg": "Prosao" });
                 }
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
+        this.nadjiNastavnikaUsername = (req, res) => {
+            let username = req.body.username;
+            nastavnik_1.default.findOne({ "korisnickoIme": username
+            }).then((user) => {
+                res.json(user);
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
+        this.nadjiNastavnikaEmail = (req, res) => {
+            let email = req.body.email;
+            nastavnik_1.default.findOne({ "email": email
+            }).then((user) => {
+                if (user != null) {
+                    res.json({ "message": "ok" });
+                }
+                else {
+                    res.json({ "message": "nije ok" });
+                }
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
+        this.dohvatiAktivneNastavnike = (req, res) => {
+            nastavnik_1.default.find({ "aktivan": 1
+            }).then((nastavnici) => {
+                res.json(nastavnici);
             }).catch((err) => {
                 console.log(err);
             });

@@ -10,6 +10,8 @@ import { RegistracijaComponent } from './registracija/registracija.component';
 import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.component';
 import { NastavnikComponent } from './nastavnik/nastavnik.component';
 import { UcenikComponent } from './ucenik/ucenik.component';
+import { NeregistrovaniComponent } from './neregistrovani/neregistrovani.component';
+import { ZaboravljenaLozinkaComponent } from './zaboravljena-lozinka/zaboravljena-lozinka.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UcenikComponent } from './ucenik/ucenik.component';
     RegistracijaComponent,
     PromenaLozinkeComponent,
     NastavnikComponent,
-    UcenikComponent
+    UcenikComponent,
+    NeregistrovaniComponent,
+    ZaboravljenaLozinkaComponent
   ],
   imports: [
     BrowserModule,

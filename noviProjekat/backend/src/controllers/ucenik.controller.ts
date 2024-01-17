@@ -62,11 +62,7 @@ export class UcenikController{
         
         Ucenik.findOne({"korisnickoIme": username 
             }).then((user)=>{
-                if(user != null){
-                    res.json({"message" : "ok"})
-                }else{
-                    res.json({"message" : "nije ok"})
-                }
+                res.json(user)
                 
             }).catch((err)=>{
                 console.log(err)
@@ -118,6 +114,19 @@ export class UcenikController{
                 }else{
                     res.json({"message" : "nije ok"})
                 }
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
+    dohvatiUcenike = (req: express.Request, res: express.Response) =>{
+        
+        
+        Ucenik.find({
+            }).then((ucenici)=>{
+                res.json(ucenici)
                 
             }).catch((err)=>{
                 console.log(err)

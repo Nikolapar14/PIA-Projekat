@@ -12,4 +12,5 @@ ucenikRouter.route('/nadjiUcenikaUsername').post((req, res) => new ucenik_contro
 ucenikRouter.route('/nadjiUcenikaUsernamePassword').post((req, res) => new ucenik_controller_1.UcenikController().nadjiUcenikaUsernamePassword(req, res));
 ucenikRouter.route('/nadjiUcenikaEmail').post((req, res) => new ucenik_controller_1.UcenikController().nadjiUcenikaEmail(req, res));
 ucenikRouter.route('/promenaSifre').post((req, res) => new ucenik_controller_1.UcenikController().promenaSifre(req, res));
+ucenikRouter.route('/dohvatiUcenike').get((req, res) => new ucenik_controller_1.UcenikController().dohvatiUcenike(req, res));
 exports.default = ucenikRouter;

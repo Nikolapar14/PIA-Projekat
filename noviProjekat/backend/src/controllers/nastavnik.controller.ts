@@ -21,6 +21,7 @@ export class NastavnikController{
         let drugiPredmet = req.body.drugiPredmet
         let uzrast = req.body.uzrast
         let izvor = req.body.izvor
+        let aktivan = req.body.aktivan
         
 
         let nastavnik = {
@@ -39,7 +40,8 @@ export class NastavnikController{
             predmeti : predmeti,
             drugiPredmet : drugiPredmet,
             uzrast : uzrast,
-            izvor : izvor
+            izvor : izvor,
+            aktivan: aktivan
             
         }
 
@@ -93,6 +95,49 @@ export class NastavnikController{
                 }
                 
                 
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
+    nadjiNastavnikaUsername = (req: express.Request, res: express.Response) =>{
+        let username = req.body.username
+        
+        Nastavnik.findOne({"korisnickoIme": username 
+            }).then((user)=>{
+                res.json(user)
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
+    nadjiNastavnikaEmail= (req: express.Request, res: express.Response) =>{
+        let email = req.body.email
+        
+        Nastavnik.findOne({"email": email
+            }).then((user)=>{
+                if(user != null){
+                    res.json({"message" : "ok"})
+                }else{
+                    res.json({"message" : "nije ok"})
+                }
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
+    dohvatiAktivneNastavnike= (req: express.Request, res: express.Response) =>{
+        
+        
+        Nastavnik.find({"aktivan": 1
+            }).then((nastavnici)=>{
+                res.json(nastavnici)
                 
             }).catch((err)=>{
                 console.log(err)

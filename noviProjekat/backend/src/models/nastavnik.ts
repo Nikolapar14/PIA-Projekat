@@ -51,6 +51,9 @@ const Nastavnik = new mongoose.Schema(
         },
         izvor: {
             type: String
+        },
+        aktivan: {
+            type: Number
         }
 
 

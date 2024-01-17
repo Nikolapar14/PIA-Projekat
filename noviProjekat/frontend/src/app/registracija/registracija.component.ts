@@ -3,6 +3,7 @@ import { Ucenik } from '../models/ucenik';
 import { UcenikServiceService } from '../servisi/ucenik-service.service';
 import { Nastavnik } from '../models/nastavnik';
 import { NastavnikService } from '../servisi/nastavnik.service';
+import { Message } from '../models/message';
 
 @Component({
   selector: 'app-registracija',
@@ -246,8 +247,8 @@ export class RegistracijaComponent implements OnInit{
       this.greska6 = false
       this.formatLozinkaGreska = false
       this.ucenikServis.nadjiUcenikaUsername(this.ucenik.korisnickoIme).subscribe(
-        data=>{
-          if(data.message == "ok") alert("Ucenik sa unetim korisnicim imenom vec postoji u sistemu!")
+        (data: Ucenik)=>{
+          if(data) alert("Ucenik sa unetim korisnicim imenom vec postoji u sistemu!")
           else{
             this.ucenikServis.nadjiUcenikaEmail(this.ucenik.email).subscribe(
               data=>{
@@ -375,10 +376,27 @@ export class RegistracijaComponent implements OnInit{
 
       this.formatLozinkaGreska = false
 
-      this.nastavnikServis.registrujNastavnika(this.nastavnik).subscribe(
-        data=>{
-          if(data.message == "ok")alert("Nastavnik je uspesno dodat")
-          else alert("Nastavnik nije dodat")
+      this.nastavnik.aktivan = 0
+
+      this.nastavnikServis.nadjiNastavnikaUsername(this.nastavnik.korisnickoIme).subscribe(
+        (data: Nastavnik)=>{
+          if(data) alert("Nastavnik sa unetim korisnickim imenom vec postoji u sistemu!")
+          else{
+            this.nastavnikServis.nadjiNastavnikaEmail(this.nastavnik.email).subscribe(
+              (data: Message)=>{
+                if(data.message == 'ok')alert("Nastavnik sa unetim email-om vec postoji u sistemu!")
+                else{
+                  this.nastavnikServis.registrujNastavnika(this.nastavnik).subscribe(
+                    data=>{
+                      if(data.message == "ok") alert("Nastavnik je uspesno dodat")
+                      else alert("Ucenik nije dodat")
+                    }
+                  )
+              }
+              }
+            )
+
+          }
         }
       )
 

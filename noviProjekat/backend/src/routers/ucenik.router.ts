@@ -29,4 +29,8 @@ ucenikRouter.route('/promenaSifre').post(
     (req,res) => new UcenikController().promenaSifre(req,res)
 )
 
+ucenikRouter.route('/dohvatiUcenike').get(
+    (req,res) => new UcenikController().dohvatiUcenike(req,res)
+)
+
 export default ucenikRouter

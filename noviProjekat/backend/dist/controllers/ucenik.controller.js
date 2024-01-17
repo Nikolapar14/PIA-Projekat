@@ -57,12 +57,7 @@ class UcenikController {
             let username = req.body.username;
             ucenik_1.default.findOne({ "korisnickoIme": username
             }).then((user) => {
-                if (user != null) {
-                    res.json({ "message": "ok" });
-                }
-                else {
-                    res.json({ "message": "nije ok" });
-                }
+                res.json(user);
             }).catch((err) => {
                 console.log(err);
             });
@@ -100,6 +95,13 @@ class UcenikController {
                 else {
                     res.json({ "message": "nije ok" });
                 }
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
+        this.dohvatiUcenike = (req, res) => {
+            ucenik_1.default.find({}).then((ucenici) => {
+                res.json(ucenici);
             }).catch((err) => {
                 console.log(err);
             });

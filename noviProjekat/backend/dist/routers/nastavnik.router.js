@@ -10,4 +10,7 @@ nastavnikRouter.route('/register').post((req, res) => new nastavnik_controller_1
 nastavnikRouter.route('/logIn').post((req, res) => new nastavnik_controller_1.NastavnikController().logIn(req, res));
 nastavnikRouter.route('/nadjiNastavnikaUsernamePassword').post((req, res) => new nastavnik_controller_1.NastavnikController().nadjiNastavnikaUsernamePassword(req, res));
 nastavnikRouter.route('/promenaSifre').post((req, res) => new nastavnik_controller_1.NastavnikController().promenaSifre(req, res));
+nastavnikRouter.route('/nadjiNastavnikaUsername').post((req, res) => new nastavnik_controller_1.NastavnikController().nadjiNastavnikaUsername(req, res));
+nastavnikRouter.route('/nadjiNastavnikaEmail').post((req, res) => new nastavnik_controller_1.NastavnikController().nadjiNastavnikaEmail(req, res));
+nastavnikRouter.route('/dohvatiAktivneNastavnike').get((req, res) => new nastavnik_controller_1.NastavnikController().dohvatiAktivneNastavnike(req, res));
 exports.default = nastavnikRouter;

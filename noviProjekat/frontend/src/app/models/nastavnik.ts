@@ -16,5 +16,6 @@ export class Nastavnik{
   drugiPredmet: string = ""
   uzrast : string[] = []
   izvor: string = ""
+  aktivan: number = 0
 
 }

@@ -1,0 +1,22 @@
+.tabela111 {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Add the desired spacing above the table */
+}
+
+.tabela111 th,
+.tabela111 td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.tabela111 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tabela111 li {
+  margin-bottom: 5px; /* Add the desired spacing between items */
+}

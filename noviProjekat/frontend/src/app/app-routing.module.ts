@@ -5,13 +5,17 @@ import { RegistracijaComponent } from './registracija/registracija.component';
 import { NastavnikComponent } from './nastavnik/nastavnik.component';
 import { UcenikComponent } from './ucenik/ucenik.component';
 import { PromenaLozinkeComponent } from './promena-lozinke/promena-lozinke.component';
+import { NeregistrovaniComponent } from './neregistrovani/neregistrovani.component';
+import { ZaboravljenaLozinkaComponent } from './zaboravljena-lozinka/zaboravljena-lozinka.component';
 
 const routes: Routes = [
-  {path:"", component: LoginComponent},
+  {path:"login", component: LoginComponent},
   {path:"registracija", component: RegistracijaComponent},
   {path:"nastavnik", component: NastavnikComponent},
   {path:"ucenik", component: UcenikComponent},
-  {path:"promenaLozinke",component:PromenaLozinkeComponent}
+  {path:"promenaLozinke",component:PromenaLozinkeComponent},
+  {path:"", component:NeregistrovaniComponent},
+  {path:"zaboravljena", component:ZaboravljenaLozinkaComponent}
 ];
 
 @NgModule({

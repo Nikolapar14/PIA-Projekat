@@ -43,24 +43,46 @@
         <div class="col-sm-6">
             <table>
                 <tr>
-                    <td>Korisnicko ime: </td>
+                    <td>Korisnicko ime:  </td>
                     <td><input type="text" [(ngModel)]="korisnickoIme"></td>
                 </tr>
                 <tr>
-                    <td>Stara lozinka: </td>
-                    <td><input type="password" [(ngModel)]="staraLozinka"></td>
+                  <td></td>
+                  <td style="display: flex; justify-content: center;"><button type="button" class="btn btn-dark" (click)="potvrdi()">Dalje</button></td>
                 </tr>
-                <tr>
-                    <td>Nova lozinka: </td>
-                    <td><input type="text" [(ngModel)]="novaLozinka"></td>
+                <tr *ngIf="potvrda">
+                    <td>Bezbedonosno pitanje: </td>
+                    <td>{{pitanje}}</td>
                 </tr>
-                <tr>
-                    <td>Ponovljena nova lozinka: </td>
-                    <td><input type="text" [(ngModel)]="novaLozinka2"></td>
+                <tr *ngIf="potvrda">
+                    <td>Odgovor: </td>
+                    <td><input type="text" [(ngModel)]="odgovor"></td>
                 </tr>
-                <tr>
-                    <td colspan="2" style="display: flex; justify-content: center;"><button type="button" class="btn btn-dark" (click)="promeniLozinku()">Promeni lozinku</button></td>
+                <tr *ngIf="potvrda">
+                    <td></td>
+                    <td style="display: flex; justify-content: center;"><button type="button" class="btn btn-dark" (click)="proveriOdgovor()">Potvrdi</button></td>
                 </tr>
+                <tr *ngIf="potvrda">
+
+                  <td colspan="2"><div class="alert alert-danger" role="alert" *ngIf="netacanOdgovor">
+                    <b>Odgovor je netacan!</b>
+                  </div></td>
+
+                </tr>
+
+              <tr *ngIf="dalje">
+                  <td>Nova lozinka: </td>
+                  <td><input type="text" [(ngModel)]="novaLozinka"></td>
+              </tr>
+              <tr *ngIf="dalje">
+                  <td>Ponovljena nova lozinka: </td>
+                  <td><input type="text" [(ngModel)]="novaLozinka2"></td>
+              </tr>
+              <tr *ngIf="dalje">
+                <td></td>
+                <td style="display: flex; justify-content: center;"><button type="button" class="btn btn-dark" (click)="promeniLozinku()">Promeni lozinku</button></td>
+            </tr>
+
             </table>
             <span style="color: red;">{{poruka}}</span>
         </div>

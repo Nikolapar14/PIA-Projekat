@@ -52,6 +52,9 @@ const Nastavnik = new mongoose_1.default.Schema({
     },
     izvor: {
         type: String
+    },
+    aktivan: {
+        type: Number
     }
 });
 exports.default = mongoose_1.default.model('Nastavnik', Nastavnik, 'nastavnici');

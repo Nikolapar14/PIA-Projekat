@@ -29,7 +29,8 @@ export class NastavnikService {
       predmeti : nastavnik.predmeti,
       drugiPredmet : nastavnik.drugiPredmet,
       uzrast : nastavnik.uzrast,
-      izvor : nastavnik.izvor
+      izvor : nastavnik.izvor,
+      aktivan: nastavnik.aktivan
     }
 
     return this.http.post<Message>("http://localhost:4000/nastavnik/register", data)
@@ -66,6 +67,31 @@ export class NastavnikService {
     }
 
     return this.http.post<Message>("http://localhost:4000/nastavnik/promenaSifre",data)
+
+  }
+
+  nadjiNastavnikaUsername(username: String){
+    const data = {
+      username: username
+    }
+
+    return this.http.post<Nastavnik>("http://localhost:4000/nastavnik/nadjiNastavnikaUsername",data)
+
+  }
+
+  nadjiNastavnikaEmail(email: string) {
+
+    const data = {
+      email : email
+    }
+
+    return this.http.post<Message>("http://localhost:4000/nastavnik/nadjiNastavnikaEmail",data)
+  }
+
+  dohvatiAktivneNastavnike(){
+
+
+    return this.http.get<Nastavnik[]>("http://localhost:4000/nastavnik/dohvatiAktivneNastavnike")
 
   }
 

@@ -49,7 +49,7 @@ export class UcenikServiceService {
       username: username
     }
 
-    return this.http.post<Message>("http://localhost:4000/ucenik/nadjiUcenikaUsername",data)
+    return this.http.post<Ucenik>("http://localhost:4000/ucenik/nadjiUcenikaUsername",data)
 
   }
 
@@ -82,6 +82,11 @@ export class UcenikServiceService {
 
     return this.http.post<Message>("http://localhost:4000/ucenik/promenaSifre",data)
 
+  }
+
+  dohvatiUcenike(){
+
+    return this.http.get<Ucenik[]>("http://localhost:4000/ucenik/dohvatiUcenike")
   }
 
 }
