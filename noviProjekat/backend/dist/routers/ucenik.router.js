@@ -13,4 +13,6 @@ ucenikRouter.route('/nadjiUcenikaUsernamePassword').post((req, res) => new uceni
 ucenikRouter.route('/nadjiUcenikaEmail').post((req, res) => new ucenik_controller_1.UcenikController().nadjiUcenikaEmail(req, res));
 ucenikRouter.route('/promenaSifre').post((req, res) => new ucenik_controller_1.UcenikController().promenaSifre(req, res));
 ucenikRouter.route('/dohvatiUcenike').get((req, res) => new ucenik_controller_1.UcenikController().dohvatiUcenike(req, res));
+ucenikRouter.route('/azurirajUcenika').post((req, res) => new ucenik_controller_1.UcenikController().azurirajUcenika(req, res));
+ucenikRouter.route('/azurirajRazred').post((req, res) => new ucenik_controller_1.UcenikController().azurirajRazred(req, res));
 exports.default = ucenikRouter;

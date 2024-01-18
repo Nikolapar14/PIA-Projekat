@@ -33,4 +33,12 @@ ucenikRouter.route('/dohvatiUcenike').get(
     (req,res) => new UcenikController().dohvatiUcenike(req,res)
 )
 
+ucenikRouter.route('/azurirajUcenika').post(
+    (req,res) => new UcenikController().azurirajUcenika(req,res)
+)
+
+ucenikRouter.route('/azurirajRazred').post(
+    (req,res) => new UcenikController().azurirajRazred(req,res)
+)
+
 export default ucenikRouter

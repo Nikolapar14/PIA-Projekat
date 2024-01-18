@@ -57,13 +57,6 @@ export class NeregistrovaniComponent implements OnInit{
 
   }
 
-  pretrazi(){
 
-    if(this.imeNastavnika == "" || this.prezimeNastavnika == "" || this.predmetPretraga == ""){
-      this.nastavnikServis.dohvatiAktivneNastavnike().subscribe()
-    }
-
-
-  }
 
 }

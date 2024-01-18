@@ -41,7 +41,7 @@ const Ucenik = new mongoose.Schema(
             type: String
         },
         razred: {
-            type: String
+            type: Number
         }
 
 

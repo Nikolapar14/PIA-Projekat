@@ -95,5 +95,17 @@ export class NastavnikService {
 
   }
 
+  azurirajNastavnika(nastavnik: Nastavnik){
+
+    const data = {
+      nastavnik: nastavnik
+    }
+
+    return this.http.post<Message>("http://localhost:4000/nastavnik/azurirajNastavnika",data)
+
+  }
+
+
+
 
 }

@@ -13,4 +13,5 @@ nastavnikRouter.route('/promenaSifre').post((req, res) => new nastavnik_controll
 nastavnikRouter.route('/nadjiNastavnikaUsername').post((req, res) => new nastavnik_controller_1.NastavnikController().nadjiNastavnikaUsername(req, res));
 nastavnikRouter.route('/nadjiNastavnikaEmail').post((req, res) => new nastavnik_controller_1.NastavnikController().nadjiNastavnikaEmail(req, res));
 nastavnikRouter.route('/dohvatiAktivneNastavnike').get((req, res) => new nastavnik_controller_1.NastavnikController().dohvatiAktivneNastavnike(req, res));
+nastavnikRouter.route('/azurirajNastavnika').post((req, res) => new nastavnik_controller_1.NastavnikController().azurirajNastavnika(req, res));
 exports.default = nastavnikRouter;

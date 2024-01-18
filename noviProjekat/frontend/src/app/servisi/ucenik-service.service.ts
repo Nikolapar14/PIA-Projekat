@@ -89,4 +89,25 @@ export class UcenikServiceService {
     return this.http.get<Ucenik[]>("http://localhost:4000/ucenik/dohvatiUcenike")
   }
 
+  azurirajUcenika(ucenik: Ucenik){
+
+    const data = {
+      ucenik: ucenik
+    }
+
+    return this.http.post<Message>("http://localhost:4000/ucenik/azurirajUcenika",data)
+
+  }
+
+  azurirajRazred(korisnickoIme: string, razred: number){
+
+    const data = {
+      korisnickoIme: korisnickoIme,
+      razred: razred
+    }
+
+    return this.http.post<Message>("http://localhost:4000/ucenik/azurirajRazred",data)
+
+  }
+
 }

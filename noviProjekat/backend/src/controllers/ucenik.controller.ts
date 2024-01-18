@@ -134,5 +134,34 @@ export class UcenikController{
 
     }
 
+    azurirajUcenika = (req: express.Request, res: express.Response) =>{
+        
+        let ucenik = req.body.ucenik
+        
+        Ucenik.findOneAndUpdate({ "korisnickoIme": ucenik.korisnickoIme
+            },{$set: {"ime": ucenik.ime, "prezime": ucenik.prezime, "adresa": ucenik.adresa, "email": ucenik.email, "kontaktTelefon": ucenik.kontaktTelefon, "tipSkole": ucenik.tipSkole, "profilnaSlika": ucenik.profilnaSlika, "razred":ucenik.razred}}).then((ucenici)=>{
+                res.json({"msg": "ok"})
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
+    azurirajRazred = (req: express.Request, res: express.Response) =>{
+        
+        let username = req.body.korisnickoIme
+        let razred = req.body.razred
+        
+        Ucenik.findOneAndUpdate({ "korisnickoIme": username
+            },{$set:{"razred": razred} }).then((ucenici)=>{
+                res.json({"msg": "ok"})
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
 
 }

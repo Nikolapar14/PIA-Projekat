@@ -145,6 +145,20 @@ export class NastavnikController{
 
     }
 
+    azurirajNastavnika = (req: express.Request, res: express.Response) =>{
+        
+        let nastavnik = req.body.nastavnik
+        
+        Nastavnik.findOneAndUpdate({ "korisnickoIme": nastavnik.korisnickoIme
+            },{$set: {"ime": nastavnik.ime, "prezime": nastavnik.prezime, "adresa": nastavnik.adresa, "email": nastavnik.email, "kontaktTelefon": nastavnik.kontaktTelefon, "predmeti": nastavnik.predmeti, "profilnaSlika": nastavnik.profilnaSlika, "uzrast": nastavnik.uzrast}}).then((ucenici)=>{
+                res.json({"msg": "ok"})
+                
+            }).catch((err)=>{
+                console.log(err)
+            })
+
+    }
+
    
 
 

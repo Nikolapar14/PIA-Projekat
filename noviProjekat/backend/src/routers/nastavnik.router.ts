@@ -33,6 +33,10 @@ nastavnikRouter.route('/dohvatiAktivneNastavnike').get(
     (req,res) => new NastavnikController().dohvatiAktivneNastavnike(req,res)
 )
 
+nastavnikRouter.route('/azurirajNastavnika').post(
+    (req,res) => new NastavnikController().azurirajNastavnika(req,res)
+)
+
 
 
 export default nastavnikRouter

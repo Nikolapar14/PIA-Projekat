@@ -71,7 +71,7 @@ export class RegistracijaComponent implements OnInit{
     this.ucenik.pol = ""
     this.ucenik.profilnaSlika = null
     this.ucenik.tipSkole = ""
-    this.ucenik.razred = ""
+    this.ucenik.razred = 0
 
     this.nastavnik.korisnickoIme = ""
     this.nastavnik.ime = ""
@@ -175,7 +175,7 @@ export class RegistracijaComponent implements OnInit{
   submit(){
 
     this.ucenik.profilnaSlika = this.selectedImage
-    this.ucenik.razred = this.razred
+    this.ucenik.razred = parseInt(this.razred,10)
     this.ucenik.tipSkole = this.tipSkole
 
     if(this.ucenik.korisnickoIme == "" || this.ucenik.ime == "" || this.ucenik.prezime == ""|| this.ucenik.lozinka == "" || this.ucenik.odgovor == "" || this.ucenik.adresa == "" || this.ucenik.kontaktTelefon == "" || this.ucenik.email == ""){
@@ -221,7 +221,7 @@ export class RegistracijaComponent implements OnInit{
       this.greska5 = true
       this.greska6 = false
       this.formatLozinkaGreska = false
-    }else if(this.ucenik.razred == ""){
+    }else if(this.ucenik.razred == 0){
       this.greska1 = false
       this.greska2 = false
       this.greska3 = false
@@ -288,6 +288,7 @@ export class RegistracijaComponent implements OnInit{
   submitNastavnik(){
     this.nastavnik.profilnaSlika = this.selectedImage
     this.nastavnik.pdf = this.selectedFile
+    this.ucenik.razred = parseInt(this.razred,10)
 
     if(this.nastavnik.korisnickoIme == "" || this.nastavnik.ime == "" || this.nastavnik.prezime == ""|| this.nastavnik.lozinka == "" || this.nastavnik.odgovor == "" || this.nastavnik.adresa == "" || this.nastavnik.kontaktTelefon == "" || this.nastavnik.email == ""){
       this.greska1 = true

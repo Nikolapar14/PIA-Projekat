@@ -106,6 +106,25 @@ class UcenikController {
                 console.log(err);
             });
         };
+        this.azurirajUcenika = (req, res) => {
+            let ucenik = req.body.ucenik;
+            ucenik_1.default.findOneAndUpdate({ "korisnickoIme": ucenik.korisnickoIme
+            }, { $set: { "ime": ucenik.ime, "prezime": ucenik.prezime, "adresa": ucenik.adresa, "email": ucenik.email, "kontaktTelefon": ucenik.kontaktTelefon, "tipSkole": ucenik.tipSkole, "profilnaSlika": ucenik.profilnaSlika, "razred": ucenik.razred } }).then((ucenici) => {
+                res.json({ "msg": "ok" });
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
+        this.azurirajRazred = (req, res) => {
+            let username = req.body.korisnickoIme;
+            let razred = req.body.razred;
+            ucenik_1.default.findOneAndUpdate({ "korisnickoIme": username
+            }, { $set: { "razred": razred } }).then((ucenici) => {
+                res.json({ "msg": "ok" });
+            }).catch((err) => {
+                console.log(err);
+            });
+        };
     }
 }
 exports.UcenikController = UcenikController;

@@ -42,7 +42,7 @@ const Ucenik = new mongoose_1.default.Schema({
         type: String
     },
     razred: {
-        type: String
+        type: Number
     }
 });
 exports.default = mongoose_1.default.model('Ucenik', Ucenik, 'ucenici');

@@ -11,6 +11,6 @@ export class Ucenik{
   email: string = ""
   profilnaSlika: string | null = null
   tipSkole: string = ""
-  razred: string = ""
+  razred: number = 0
 
 }
